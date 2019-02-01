@@ -32,7 +32,18 @@ pair <int, int> Sqr(pair<int, int> &p)
     return p;
 }
 
-// Специализация для map
+// Специализация для map of int
+template <>
+map <int, int>Sqr(map <int, int> &m)
+{
+    for (auto& x : m)
+    {
+        x.second = Sqr(x.second);  
+    }
+    return m;
+}
+
+// Специализация для map of pairs 
 template <>
 map <int, pair<int, int>>Sqr(map <int, pair<int, int>> &m)
 {
@@ -45,6 +56,7 @@ map <int, pair<int, int>>Sqr(map <int, pair<int, int>> &m)
 
 int main(int argc, char** argv) {
 // Пример вызова функции
+    
 // int    
     int a = 2;
     cout << "int a = " << a << " Sqr(a) = " << Sqr(a) << endl;
@@ -52,6 +64,7 @@ int main(int argc, char** argv) {
     double b = 2;
     cout << "double b = " << b << " Sqr(b) = " << Sqr(b) 
             << endl << endl;
+    
 // vector
     vector<int> v = {1, 2, 3};
     cout << "vector:";
@@ -59,6 +72,7 @@ int main(int argc, char** argv) {
       cout << ' ' << x;
     }
     cout << endl << endl;
+    
 // pair    
     pair<int, int> pr = {3, 4};
     cout << "pairs:" << endl;
@@ -67,7 +81,18 @@ int main(int argc, char** argv) {
     cout << "Sqr pairs:" << endl;
     cout << "{" << pr.first << ", " << pr.second << "}" 
             << endl << endl;
-// map    
+
+// map 1
+    map<int, int> map_of_int = {
+      {4, 2},
+      {7, 4}
+    };
+    cout << "map of int:" << endl;
+    for (const auto& x : Sqr(map_of_int)) {
+      cout << x.first << ' ' << x.second << endl;
+    }
+    
+// map 2   
     map<int, pair<int, int>> map_of_pairs = {
       {4, {2, 2}},
       {7, {4, 3}}
