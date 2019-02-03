@@ -4,7 +4,7 @@
 
 using namespace std;
 
-template <typename T>
+template <class T>
 class Deque
 {
 public:
@@ -39,19 +39,27 @@ public:
     void PushBack(T const& value) {
        item.push_back(value);
     }
-   
-    friend ostream& operator<< (ostream &os, Deque const &dec);
-private:
+   //friend ostream& operator<< (ostream &os, Deque<T> const &dec);
+    ostream& operator<< (ostream &os, Deque<T> const &dec);
+    {    
+    for (T d: dec)
+        os << d << endl;
+//    os << dec.item << endl;
+    return os;
+        }
+//private:
    vector<T> item;
 };
 
 // перегрузка оператора вывода
-ostream& operator<< (ostream &os, <T> const &dec)
-{
-    for (T d: dec)
-        os << d << endl;
-    return os;
-}
+//template <class T>
+//ostream& operator<< (ostream &os, Deque<T> const &dec)
+//{
+//    for (T d: dec)
+//        os << d << endl;
+////    os << dec.item << endl;
+//    return os;
+//}
 
 
 int main(int argc, char** argv) {
@@ -66,7 +74,7 @@ int main(int argc, char** argv) {
     cout << d.Size() << endl;
     d.PushFront(1);
     cout << d.Size() << endl;
-    
+    cout << d << endl;
     return 0;
 }
 
