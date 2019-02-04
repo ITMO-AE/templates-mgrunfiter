@@ -91,22 +91,9 @@ public:
        item.push_back(value);
     }
   
-//    friend ostream& operator<< (ostream &os, Deque<T> const &dec);
-
 private:
    vector<T> item;
 };
-
-// перегрузка оператора вывода
-//template <class U>
-//ostream& operator<< (ostream &os, Deque<U> const &dec)
-//    {   
-//        for (U d: dec)
-//            os << d << endl;
-//        os << endl;
-//        return os;
-//    }
-
 
 int main(int argc, char** argv) {
 
@@ -167,11 +154,6 @@ int main(int argc, char** argv) {
     cout << "3-й элемент: " << d[2] << endl;
     cout << "4-й элемент: " << d[3] << endl;
     
-//    for (int x : d)
-//    {
-//        cout << x << " " << endl;
-//    }
-
     return 0;
 }
 
