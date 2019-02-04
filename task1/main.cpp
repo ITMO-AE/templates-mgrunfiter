@@ -15,10 +15,8 @@ T Sqr(T & t)
 template <>
 vector <int> Sqr(vector<int> &v)
 {
-    int i = 0;
-    for(int x : v){
-        v[i] = x * x;
-        i++;
+    for(int &x : v){
+        x = Sqr(x);
     }
     return v;
 }
@@ -32,20 +30,9 @@ pair <int, int> Sqr(pair<int, int> &p)
     return p;
 }
 
-// Специализация для map of int
-template <>
-map <int, int>Sqr(map <int, int> &m)
-{
-    for (auto& x : m)
-    {
-        x.second = Sqr(x.second);  
-    }
-    return m;
-}
-
 // Специализация для map of pairs 
-template <>
-map <int, pair<int, int>>Sqr(map <int, pair<int, int>> &m)
+template <typename T>
+map <int, T>Sqr(map <int, T> &m)
 {
     for (auto& x : m)
     {
