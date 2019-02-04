@@ -12,25 +12,25 @@ T Sqr(T & t)
 }
 
 // Специализация для vector
-template <>
-vector <int> Sqr(vector<int> &v)
+template <typename T>
+vector <T> Sqr(vector<T> &v)
 {
-    for(int &x : v){
+    for(auto &x : v){
         x = Sqr(x);
     }
     return v;
 }
 
 // Специализация для pair
-template <>
-pair <int, int> Sqr(pair<int, int> &p)
+template <typename T>
+pair <T, T> Sqr(pair<T, T> &p)
 {
     p.first *= p.first;
     p.second *= p.second;
     return p;
 }
 
-// Специализация для map of pairs 
+// Специализация для map
 template <typename T>
 map <int, T>Sqr(map <int, T> &m)
 {

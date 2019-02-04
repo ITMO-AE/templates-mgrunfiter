@@ -16,9 +16,7 @@ public:
     //константный метод Empty, возвращающий true, если дек не содержит ни одного элемента;
     bool Empty() const
     {
-        if (item.empty())
-            return true;
-        return false;
+        return item.empty();
     }
 
     //константный метод Size, возвращающий количество элементов в деке;
@@ -29,7 +27,7 @@ public:
 
     //константный метод At(size_t index), генерирующий стандартное исключение out_of_range, 
     //если индекс больше или равен количеству элементов в деке;
-    void At(size_t index) const
+    const void At(size_t index) const
     {
         if (index >= item.size())
             throw out_of_range("error: outside the index");
